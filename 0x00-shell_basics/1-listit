@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod +x 1-listit
+0-current_working_directory 1-listit README.md
