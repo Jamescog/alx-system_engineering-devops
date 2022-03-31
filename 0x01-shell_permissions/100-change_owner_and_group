@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 #!/bin/bash
 
+=======
+#!/bin/bash 
+chown -hR staff:vincent
+>>>>>>> afde19f84bf9b4d48735c9fe477dd6bf228d4eba
