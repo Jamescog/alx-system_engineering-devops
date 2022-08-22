@@ -1,0 +1,2 @@
+#!/bin/bash
+chown -h|--no-dereference vincent:staff _hello
