@@ -2,4 +2,4 @@
 # user configuration so that it refuse to authenticate using a password
 Host 34.204.177.28
 IdentityFile ~/.ssh/school
-PasswordAuthentication noo
+PasswordAuthentication no
