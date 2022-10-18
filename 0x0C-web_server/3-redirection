@@ -13,4 +13,4 @@ server {
         }
 }
 EOF
-sudo system start nginx
+sudo service nginx start
