@@ -8,13 +8,16 @@ sudo ufw allow 'Nginx HTTP'
 
 #default page 
 echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo tee  /etc/nginx/conf.d/default<<EOF
+sudo tee  /etc/nginx/sites-a*/default<<EOF
 server {
     listen 80;
     server_name localhost;
     root /var/www/html;
     location / {
         index.html
+    }
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 }
 EOF
