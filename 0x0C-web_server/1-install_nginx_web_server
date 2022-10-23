@@ -17,4 +17,5 @@ server {
         index.html
     }
 }
+EOF
 sudo service nginx start
