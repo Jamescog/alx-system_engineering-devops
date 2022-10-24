@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# this will configure new ubuntu system 
+sudo apt -y update
+sudo apt -y install nginx
+sudo ufw allow "Nginx HTTP"
+sudo mkdir -p /var/www/error
+echo "Hello World!" | sudo tee /var/www/html/index.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/error/custom_404.html
+sudo tee /etc/nginx/sites-a*/de* <<EOF
+server {
+    listen 80;
+    server_name localhost;
+    root /var/www/html;
+    index index.html;
+    error_page 404 /custom_404.html;
+    location = /custom_404.html {
+        root /var/www/error;
+        internal;
+    }
+    add_header X-Served-By 31302-web-02
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+}
+EOF
+sudo service nginx reload
