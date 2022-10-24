@@ -3,6 +3,7 @@
 sudo apt update
 sudo apt install nginx
 sudo ufw allo "Nginx HTTP"
+sudo mkdir -p /var/www/error
 echo "Hello World!" | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/error/custom_404.html
 sudo tee /etc/nginx/sites-a*/de* <<EOF
