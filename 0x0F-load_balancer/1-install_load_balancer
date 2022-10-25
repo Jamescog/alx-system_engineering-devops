@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # configuring load balancer
-sudo apt-get -y install --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
-sudo apt-get -y install haproxy=2.6.\*
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
+# Add HAProxy PPA
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
+sudo apt-get -y update
+
+# Install HAProxy
+sudo apt-get -y install haproxy
 echo "ENABLED=1" | sudo tee /etc/default/haproxy
 sudo tee /etc/haproxy/haproxy.cfg<<EOF
 frontend http_front
