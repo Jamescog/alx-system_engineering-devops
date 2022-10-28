@@ -1,0 +1,8 @@
+frontend Local_Server
+bind 100.25.23.42:80
+mode http
+default_backend webserver
+mode http
+balance roundrobin
+server web1 34.207.156.32:80
+server web2 52.91.133.128:80
