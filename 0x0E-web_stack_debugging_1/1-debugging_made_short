@@ -2,4 +2,4 @@
 # This bash script fixes nginx webserver to listen to port 80
 sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 service nginx restart
-echo "" > /run/nginx.pid
+echo "" > /run/nginx.pi
