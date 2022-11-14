@@ -20,10 +20,10 @@ if __name__ == "__main__":
 
     for t in todos:
         id = '"{}"'.format(argv[1])
-        name = '"{}"'.format(user['name'])
+        user_name = '"{}"'.format(user['username'])
         comp = '"{}"'.format(t['completed'])
         title = '"{}"'.format(t['title'])
-        task = [id, name, comp, title]
+        task = [id, user_name, comp, title]
         with open("{}.csv".format(argv[1]), 'a') as f:
             write = writer(f)
             write.writerow(task)
