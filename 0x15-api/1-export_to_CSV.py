@@ -1,30 +1,18 @@
 #!/usr/bin/python3
-"""
-Gather data from API and store it in csv file
-    API: https://jsonplaceholder.typicode.com/
-"""
-
-
-from requests import get
-from sys import argv
-from csv import writer
-
+"""Exports to-do list information for a given employee ID to CSV format."""
+import csv
+import requests
+import sys
 
 if __name__ == "__main__":
-    params = {"userId": argv[1]}
-    base_url = "https://jsonplaceholder.typicode.com/"
-    user = get(base_url + "users/{}".format(argv[1]))
-    user = user.json()
-    todos = get(base_url + "todos", params=params)
-    todos = todos.json()
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    for t in todos:
-        id = '"{}"'.format(argv[1])
-        user_name = '"{}"'.format(user['username'])
-        comp = '"{}"'.format(t['completed'])
-        title = '"{}"'.format(t['title'])
-        task = [id, user_name, comp, title]
-        with open("{}.csv".format(argv[1]), 'a') as f:
-            write = writer(f)
-            write.writerow(task)
-            f.close()
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [user_id, username, t.get("completed"), t.get("title")]
+         ) for t in todos]
